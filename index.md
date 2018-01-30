@@ -2,8 +2,9 @@
 
 ## Load jQuery Method
 
-1. Download jQuery from [jQuery Official Website](http://jquery.com)
-2. Download from CDN
+1.Download jQuery from [jQuery Official Website](http://jquery.com)
+
+2.Download from CDN
 
 ## Basic Grammer
 
@@ -58,17 +59,17 @@ $(document).ready(function() {
 
 You can locate an element in three ways
 
-1. tags
+1.tags
 ```javascript
 $("p").text("changed");
 ```
 
-2. id
+2.id
 ```javascript
 $("#pid1").text("changed");
 ```
 
-3. class
+3.class
 ```javascript
 $(".pclass").text("changed");
 ```
@@ -77,28 +78,28 @@ $(".pclass").text("changed");
 
 #### Common events
 
-1. click
+1.click
 ```javascript
 $("button").click(function() {
     alert("Clicked");
 });
 ```
 
-2. double click
+2.double click
 ```javascript
 $("button").dblclick(function() {
     alert("Clicked");
 });
 ```
 
-3. mouse enter
+3.mouse enter
 ```javascript
 $("button").mouseenter(function() {
     alert("Clicked");
 });
 ```
 
-4. mouse leave
+4.mouse leave
 ```javascript
 $("button").mouseleave(function() {
     alert("Clicked");
@@ -217,7 +218,7 @@ type => "MyEvent"
 
 #### Capture
 
-1. text()
+1.text()
 
 Only text
 
@@ -234,7 +235,7 @@ $(document).ready(function() {
 });
 ```
 
-2. html()
+2.html()
 
 Contains 
 
@@ -267,7 +268,7 @@ $(document).ready(function() {
 text: This is my webpage<a data-brackets-id="218">This is an a tag</a>
 ```
 
-3. val()
+3.val()
 
 ```html
 <p><input type="text" id="it" value="robinxyuan"></p>
@@ -285,7 +286,7 @@ $(document).ready(function() {
 text: robinxyuan
 ```
 
-4. attr()
+4.attr()
 
 ```html
 <p><a href="http://robinxyuan.github.io/" id="aid">robinxyuan</a></p>
@@ -306,7 +307,7 @@ text: http://robinxyuan.github.io/
 
 #### Setting
 
-1. text()
+1.text()
 
 ```html
 <p id="p1">This is my webpage</p>
@@ -322,7 +323,7 @@ $(document).ready(function() {
 });
 ```
 
-2. html()
+2.html()
 
 ```html
 <p id="p2">Hello World!</p>
@@ -336,7 +337,7 @@ $(document).ready(function() {
 });
 ```
 
-3. val()
+3.val()
 
 ```html
 <input type="text" id="i3" value="Hello World">
@@ -351,7 +352,7 @@ $(document).ready(function() {
 });
 ```
 
-4. attr()
+4.attr()
 
 ```html
 <a id="a4" href="http://www.bing.com">bing -> robinxyuan</a>
@@ -367,7 +368,7 @@ $("#btn4").click(function() {
 });
 ```
 
-5. call back
+5.call back
 
 ```html
 <p id="p5">This is my webpage</p>
@@ -384,7 +385,7 @@ $("#btn5").click(function() {
 
 #### Add elements and contents
 
-1. append
+1.append
 
 Add content after selected element
 
@@ -401,7 +402,7 @@ $(document).ready(function() {
 });
 ```
 
-2. prepend
+2.prepend
 
 Add content before selected element
 
@@ -418,7 +419,7 @@ $(document).ready(function() {
 });
 ```
 
-3. before
+3.before
 
 change line
 
@@ -435,7 +436,7 @@ $(document).ready(function() {
 });
 ```
 
-4. after
+4.after
 
 change line
 
@@ -485,7 +486,7 @@ function appendText() {
 
 ```
 
-1. remove()
+1.remove()
 
 All delete
 
@@ -496,7 +497,8 @@ $(document).ready(function() {
     });
 });
 ```
-2. empty()
+
+2.empty()
 
 Delete contents
 
