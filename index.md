@@ -1,37 +1,173 @@
-## Welcome to GitHub Pages
+## Welcome to RobinXYuan jQuery Notebook
 
-You can use the [editor on GitHub](https://github.com/RobinXYuanBlog/jQuery-Notebook/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
+## Load jQuery Method
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+1. Download jQuery from [jQuery Official Website](http://jquery.com)
+2. Download from CDN
 
-### Markdown
+## Basic Grammer
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+$(selector).action()
 
-```markdown
-Syntax highlighted code block
+### Example
 
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+```html
+<head lang="en">
+    <meta charset="UTF8">
+    <title>Basic Grammer</title>
+    <script src="../jquery-3.3.1.js"></script>
+    <script src="app.js"></script>
+</head>
+    
+<body>
+    <p>Hello</p>
+    <p>Hello</p>
+    <p>Hello</p>
+    <p>Hello</p>
+    <p>Hello</p>
+</body>
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+```javascript
+$(document).ready(function() {
+   alert("Ready"); 
+});
+```
 
-### Jekyll Themes
+```javascript
+$(document).ready(function() {
+    $("p").click(function() {
+        $(this).hide();
+    });
+});
+```
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/RobinXYuanBlog/jQuery-Notebook/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+## Selector & Events
 
-### Support or Contact
+### Selector
 
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+```html
+<body>
+    <p class="pclass" id="pid1">p1</p>
+    <p id="pid2">p2</p>
+    <button>
+        Click me
+    </button>
+</body>
+```
+
+You can locate an element in three ways
+
+1. tags
+```javascript
+$("p").text("changed");
+```
+
+2. id
+```javascript
+$("#pid1").text("changed");
+```
+
+3. class
+```javascript
+$(".pclass").text("changed");
+```
+
+### Events
+
+#### Common events
+
+1. click
+```javascript
+$("button").click(function() {
+    alert("Clicked");
+});
+```
+
+2. double click
+```javascript
+$("button").dblclick(function() {
+    alert("Clicked");
+});
+```
+
+3. mouse enter
+```javascript
+$("button").mouseenter(function() {
+    alert("Clicked");
+});
+```
+
+4. mouse leave
+```javascript
+$("button").mouseleave(function() {
+    alert("Clicked");
+});
+```
+
+#### Events bind
+
+```javascript
+("#clickMeButton").bind("click", clickHandler1);
+
+function clickHandler1(e) {
+    alert("Click Handler1");
+}
+```
+
+After jQuery 1.7, recommended
+
+```
+("#clickMeButton").on("click", clickHandler1);
+```
+
+Multi events could be binded in one element
+```javascript
+$("#clickMeButton").bind("click", clickHandler1);
+$("#clickMeButton").bind("click", clickHandler2);
+```
+
+
+#### Events unbind
+
+- Unbind all methods
+
+```javascript
+("#clickMeButton").unbind("click");
+```
+
+- Unbind specified method
+```javascript
+("#clickMeButton").unbind("click", clickHandler1);
+```
+
+After jQuery 1.7, recommended
+```
+("#clickMeButton").off("click", clickHandler1);
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
