@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF8">
+    <title>Define Event</title>
+    <script src="../jquery-3.3.1.js"></script>
+    <script src="app.js"></script>
+    <link type="text/css" rel="stylesheet" href="style.css">
+</head>
+    
+<body>
+<!--
+<p id="p1">Paragraph</p>
+<button id="btn1">hide</button>
+<button id="btn2">show</button>
+    
+<button id="btn3">toggle</button>
+-->
+    
+<script>
+    
+    for(var i = 0; i < 5; i++) {
+        $("<div>").appendTo(document.body);
+    }
+    
+    $("div").click(function() {
+        $(this).hide(2000, function() {
+            $(this).remove();
+        });
+    });
+</script>
+</body>
+</html>

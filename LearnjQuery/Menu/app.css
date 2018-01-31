@@ -1,0 +1,45 @@
+ul, li {
+    list-style: none;
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+}
+
+.main, .hmain {
+    background-color: antiquewhite;
+    background-repeat: repeat-x;
+    width: 150px;
+}
+
+li {
+    background-color: azure;
+}
+
+a {
+    text-decoration: none;
+    padding-left: 20px;
+    display: block;
+    width: 130px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+.main a, .hmain a {
+    color: #333;
+}
+
+.main li a, .hmain li a {
+    color: #666;
+}
+
+.main ul, .hmain ul {
+    display: none;
+}
+
+.hmain {
+    float: left;
+    margin-right: 1px;
+}
+

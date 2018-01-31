@@ -510,11 +510,629 @@ $(document).ready(function() {
 });
 ```
 
+### Effects
+
+#### Hide/Show
+
+```html
+<p id="p1">Paragraph</p>
+<button id="btn1">hide</button>
+<button id="btn2">show</button>
+<button id="btn3">toggle</button>
+```
+
+```css
+div {
+    background-color: antiquewhite;
+    height: 100px;
+    width: 100px;
+    margin: 2px;
+    float: left;
+}
+```
+
+1.hide()
+
+```javascript
+$(document).ready(function() {
+    $("#btn1").click(function() {
+        $("#p1").hide(1000);
+    });
+});
+```
+
+2.show()
+
+```javascript
+$(document).ready(function() {
+    $("#btn2").click(function() {
+        $("#p1").show(1000);
+    });
+});
+```
+
+3.toggle()
+
+```javascript
+$(document).ready(function() {
+    $("#btn3").click(function() {
+        $("#p1").toggle(1000);
+    });
+});
+```
+
+**Improvement**
+
+```javascript
+<script>
+    for(var i = 0; i < 5; i++) {
+        $("<div>").appendTo(document.body);
+    }
+    
+    $("div").click(function() {
+        $(this).hide(2000, function() {
+            $(this).remove();
+        });
+    });
+</script>
+```
+
+#### Fade
+
+```html
+<button id="btn1">Fande In</button>
+<button id="btn2">Fande Out</button>
+<button id="btn3">Fande Toggle</button>
+<button id="btn4">Fande To</button>
+    
+<div id="div1" style="display: none; width: 80px; height: 80px; background-color: antiquewhite"></div>
+<div id="div2" style="display: none; width: 80px; height: 80px; background-color: aqua"></div>
+<div id="div3" style="display: none; width: 80px; height: 80px; background-color: aquamarine"></div>
+```
+
+1.fadeIn()
+
+```javascript
+$(document).ready(function() {
+    $("#btn1").on("click", function() {
+        $("#div1").fadeIn(1000);
+        $("#div2").fadeIn(1000);
+        $("#div3").fadeIn(1000);
+    });
+});
+```
+
+2.fadeOut()
+
+```javascript
+$(document).ready(function() {
+    $("#btn2").on("click", function() {
+        $("#div1").fadeOut(1000);
+        $("#div2").fadeOut(1000);
+        $("#div3").fadeOut(1000);
+    });
+});
+```
+
+3.fadeToggle()
+
+```javascript
+$(document).ready(function() {
+    $("#btn3").on("click", function() {
+        $("#div1").fadeToggle(1000);
+        $("#div2").fadeToggle(1000);
+        $("#div3").fadeToggle(1000);
+    });
+});
+```
 
 
+4.fadeTo()
+
+```javascript
+$(document).ready(function() {
+    $("#btn4").on("click", function() {
+        $("#div1").fadeTo(1000, 0.3);
+        $("#div2").fadeTo(1000, 0.5);
+        $("#div3").fadeTo(1000, 0.7);
+    });
+});
+```
+
+#### Slide
+
+```html
+<div id="div_show">Show</div>
+<div id="div_hide">Hide</div>
+<div id="div_toggle">Toggle</div>
+<div id="div2">Hello World!</div>
+```
+
+```css
+#div2, #div_show, #div_hide, #div_toggle {
+    padding: 5px;
+    text-align: center;
+    background-color: antiquewhite;
+    border: solid 1px #333;
+}
+#div2 {
+    padding: 50px;
+    display: none;
+}
+```
+
+1.slideDown()
+
+```javascript
+$("#div_show").click(function() {
+    $("#div2").slideDown(1000);
+});
+```
+
+2.slideUp()
+
+```javascript
+$("#div_hide").click(function() {
+    $("#div2").slideUp(1000);
+});
+```
+
+3.slideToggle()
+
+```javascript
+$("#div_toggle").click(function() {
+    $("#div2").slideToggle(1000);
+});
+```
+
+#### Callback
+
+```html
+<button>Show</button>
+<p>Hide</p>
+```
+
+**Example1**
+
+```javascript
+$(document).ready(function() {
+    $("button").click(function() {
+		$("p").hide(1000, function() {
+			alert("Animation Complete");
+		});
+    });
+});
+```
+
+**Example2**
+
+```javascript
+$(document).ready(function() {
+    $("button").click(function() {
+        $("p").css("color", "red").slideUp(1000).slideDown(1000);
+    });
+});
+```
+
+### Extension
+
+Define custome extension
+
+**Way 1**
+
+```my_jquery.js```
+
+```javascript
+$.myjq = function() {
+    alert("Hello myJquery");
+}
+```
+
+```extension_index.js```
+
+```javascript
+$(document).ready(function() {
+    $.myjq();
+});
+```
+
+**Way 2** (Common)
+
+```html
+<div></div>
+```
+
+```my_jquery.js```
+
+```javascript
+$.fn.myjq = function() {
+    $(this).text("Hello");
+}
+```
+
+```extension_index.js```
+
+```javascript
+$(document).ready(function() {
+    $("div").myjq();
+});
+```
 
 
+### No Conflict
 
+Other libraries may use `$`, and this will create conflict, in jQuery, to realize no conflict.
+
+```html
+<div>Hello</div>
+<button id="btn">Button</button>
+```
+
+**Method I**
+
+```javascript
+$.noConflict();
+jQuery(document).ready(function() {
+    jQuery("#btn").on("click", function() {
+        jQuery("div").text("New Hello!");
+    });
+});
+```
+
+**Method II**
+
+```javascript
+var myjq = $.noConflict();
+myjq(document).ready(function() {
+    myjq("#btn").on("click", function() {
+        myjq("div").text("New Hello!");
+    });
+});
+```
+
+
+### jQuery CSS
+
+```html
+<div></div>
+```
+
+```css
+.style1 {
+    width: 100px;
+    height: 100px;
+    background-color: aquamarine;
+}
+
+.style2 {
+    width: 100px;
+    height: 100px;
+    background-color: beige;
+}
+```
+
+1.css()
+
+```javascript
+$(document).ready(function() {
+    $("div").css("width", "100px");
+    $("div").css("height", "100px");
+    $("div").css("background", "red");
+});
+```
+
+```javascript
+$(document).ready(function() {
+    $("div").css({
+        width: "100px",
+        height: "100px",
+        backgroundColor: "#FFFF00"
+    });
+});
+```
+
+2.addClass()
+
+```javascript
+$("div").addClass("style1");
+```
+
+3.removeClass()
+
+```javascript
+$("div").removeClass("style1");
+```
+
+4.toggleClass()
+
+```javascript
+$("div").toggleClass("style1");
+```
+
+
+### jQuery Box
+
+```html
+<div id="div"></div>
+```
+
+```css
+#div{
+    width: 100px;
+    height: 100px;
+    border: solid 2px aqua;
+    padding: 50px;
+    margin: 50px;
+    background-color: antiquewhite;
+}
+```
+
+1.height(), width()
+
+height.width of element
+
+2.innerHeight(), innerWidth()
+
+element + padding
+
+3.outerHeight, outerWidth()
+
+element + padding + border
+
+4.outerHeight(true), outerWidth(true)
+
+element + padding + border + margin
+
+
+```javascript
+$(document).ready(function() {
+    alert($("#div").height());
+    alert($("#div").innerHeight());
+    alert($("#div").outerHeight());
+    alert($("#div").outerHeight(true));
+})
+```
+
+### jQuery Traversing
+
+#### Down
+
+1.children()
+
+- down 1 level
+
+- Parameter is optional
+
+2.find()
+
+- Parameter is not optional
+
+- find() could select all down levels
+
+```javascript
+"#div1").children("div2").css({border: "3px solid red"});
+```
+
+
+#### Up
+
+1.parent()
+
+Up 1 level
+
+2.parents()
+
+up all levels
+
+3.parentsUntil()
+
+up to area
+
+
+#### Same Level
+
+ 1.siblings()
+
+ all elements in same level
+
+ 2.next()
+
+ next element
+
+ 3.nextAll()
+
+ next all elements
+
+ 4.nextUntil()
+
+ down until element
+
+
+ opposite to next
+
+ 5.prev()
+
+ 6.preAll()
+
+ 7.preUntil()
+
+
+ #### Filter
+
+ 1.first()
+
+ First element
+
+ 2.last()
+
+ Last element
+
+ 3.eq()
+
+ Equal to index, start from 0
+
+ 4.filter()
+
+ Filter specificated elements
+
+ 5.not()
+
+ Opposite to filter()
+
+
+```html
+<div>
+    <p>div1</p>
+</div>
+
+<div>
+    <p class="pclass">div2</p>
+</div>
+    
+<div>
+    <p class="pclass">div3</p>
+</div>
+    
+<div>
+    <a>div4</a>
+</div>
+```
+
+```javascript
+$(document).ready(function() {
+    $("div").first().css("background-color", "red");
+    $("div").last().css("background-color", "red");
+    $("div").eq(0).css("background-color", "red");
+    $("div p").filter("p").css("background-color", "red");
+    $("div p").not(".pclass").css("background-color", "red");
+})
+```
+
+
+### Menu
+
+```html
+
+<!-- Vertical -->
+<ul>
+    <li class="main">
+        <a href="#">menu 1</a>
+        <ul>
+            <li><a href="#">submenu 1</a></li>
+            <li><a href="#">submenu 2</a></li>
+            <li><a href="#">submenu 3</a></li>
+        </ul>
+    </li>
+    <li class="main">
+        <a href="#">menu 2</a>
+        <ul>
+            <li><a href="#">submenu 1</a></li>
+            <li><a href="#">submenu 2</a></li>
+        </ul>
+    </li>
+    <li class="main">
+        <a href="#">menu 3</a>
+        <ul>
+            <li><a href="#">submenu 1</a></li>
+            <li><a href="#">submenu 2</a></li>
+        </ul>
+    </li>
+</ul>
+    
+    
+<br/>
+<br/>
+    
+<!-- Horizontal -->
+
+<ul>
+    <li class="hmain">
+        <a href="#">menu 1</a>
+        <ul>
+            <li><a href="#">submenu 1</a></li>
+            <li><a href="#">submenu 2</a></li>
+            <li><a href="#">submenu 3</a></li>
+        </ul>
+    </li>
+    <li class="hmain">
+        <a href="#">menu 2</a>
+        <ul>
+            <li><a href="#">submenu 1</a></li>
+            <li><a href="#">submenu 2</a></li>
+        </ul>
+    </li>
+    <li class="hmain">
+        <a href="#">menu 3</a>
+        <ul>
+            <li><a href="#">submenu 1</a></li>
+            <li><a href="#">submenu 2</a></li>
+        </ul>
+    </li>
+</ul>
+```
+
+```css
+ul, li {
+    list-style: none;
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+}
+
+.main, .hmain {
+    background-color: antiquewhite;
+    background-repeat: repeat-x;
+    width: 150px;
+}
+
+li {
+    background-color: azure;
+}
+
+a {
+    text-decoration: none;
+    padding-left: 20px;
+    display: block;
+    width: 130px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+.main a, .hmain a {
+    color: #333;
+}
+
+.main li a, .hmain li a {
+    color: #666;
+}
+
+.main ul, .hmain ul {
+    display: none;
+}
+
+.hmain {
+    float: left;
+    margin-right: 1px;
+}
+```
+
+```javascript
+$(document).ready(function() {
+    $(".main>a").click(function() {
+        var ulNode = $(this).next("ul");
+
+        ulNode.slideToggle(500);
+    });
+    
+    $(".hmain").hover(function() {
+        $(this).children("ul").slideDown(500);
+    }, function() {
+        $(this).children("ul").slideUp(500);
+    });
+});
+```
 
 
 
